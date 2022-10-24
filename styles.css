@@ -124,9 +124,9 @@ a{
     border-radius: 10px;
 }
 
-/*.hide-search-list{
+.hide-search-list{
     display: none;
-}*/
+}
 
 .result-container{
     padding: 3rem 0;

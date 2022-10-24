@@ -4,7 +4,7 @@ const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
 async function loadMovies(searchTerm){
-    const URL = `http://www.omdbapi.com/?s=${searchTerm}apikey=1fd5f2d0&`;
+    const URL = `http://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=1fd5f2d0`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
 
