@@ -32,9 +32,22 @@ function displayMoviesList(movies){
         <div class = "search-item-info">
             <h3>${movies[idx].Title}</h3>
             <p>${movies[idx].Year}</p>
+            <button class ="nominate-button" onclick = "nominateMovies()"> Nominate </button>
         </div>
         `;
         searchList.appendChild(movieListItem);
     }
 
 }
+
+function nominateMovies(){
+    alert('yeah')
+}
+
+
+
+window.addEventListener('click', (event) => {
+    if (event.target.ClassName!="form-control"){
+        searchList.classList.add('hide-search-list');
+    }
+});
