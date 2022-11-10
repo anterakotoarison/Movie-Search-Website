@@ -40,27 +40,31 @@ function displayMoviesList(movies){
 }
 
 function nominateMovies(){
-    alert('yeah')
+    //alert('yeah')
     const searchListMovies = searchList.querySelectorAll('.search-list-item');
     searchListMovies.forEach(async movie => {
-        console.log(movie.dataset.id);
+        //console.log(movie.dataset.id);
         searchList.classList.add('hide-search-list');
         movieSearchBox.value = "";
         const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&page=1&apikey=1fd5f2d0`);
         const movieDetails = await result.json();
-        console.log(movieDetails);
-        displayMovieDetails(movieDetails);
+        //console.log(movieDetails);
+        displayMovieDetail(movieDetails);
     });
     
 }
-function displayMovieDetails(details){
+
+function displayMovieDetail(details){
     console.log(details);
-    nominateGrid.innerHTML = `
-    <div class = "movie-info">
+    let nomListItem = document.createElement('div');
+    nomListItem.classList.add('nom-list-item');
+        nomListItem.innerHTML = `  
+        <div class = "movie-info">
         <h3 class = "movie-title">${details.Title}</h3>
         <h3 class = "year">${details.Year}</h3>
     </div>
-    `;
+        `;
+    nominateGrid.appendChild(nomListItem);
 }
 
 window.addEventListener('click', (event) => {
