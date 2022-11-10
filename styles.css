@@ -131,37 +131,36 @@ a{
 .hide-search-list{
     display: none;
 }
-.nominate-box{
+
+.result-container{
+    padding: 3rem 0;
     position: absolute;
     width: 350px;
-    max-height: 500px;
+    max-height: fit-content;
     overflow-y: scroll;
     padding: 0.5rem 1rem 0.5rem 1rem;
-    background-color: #E5E4E2;
     box-shadow: 0.2rem 0.2rem black;
     float: right;
     margin-top: 50px;
     margin-right: 220px;
     position: relative;
+    background-color: #630a31;
 }
-
 .box-title{
     width: fit-content;
     font-size: small;
     font-weight: bold;
-    text-shadow: 0.2rem 0.2rem white;
+    color: white;
+    text-shadow: 0.03rem 0.03rem black;
     padding: 0.2rem 0.2rem 0.2rem 0.2rem;
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-}
-
-.result-container{
-    padding: 3rem 0;
 }
 
 .movie-info{
     text-align: center;
     color: #fff;
     padding-top: 3rem;
+    border: none;
 }
 
 .movie-title{
@@ -169,12 +168,7 @@ a{
     color: black;
 }
 
-.movie-misc-info{
-    list-style-type: none;
-    
-}
-
-.movie-info .year{
+.year{
     font-weight: 500;
 }
 
