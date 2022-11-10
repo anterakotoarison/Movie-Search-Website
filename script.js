@@ -32,7 +32,7 @@ function displayMoviesList(movies){
         <div class = "search-item-info">
             <h3>${movies[idx].Title}</h3>
             <p>${movies[idx].Year}</p>
-            <button class ="nominate-button" onclick = nominateMovies()> Nominate </button>
+            <button class ="nominate-button" onclick = "nominateMovies()"> Nominate </button>
         </div>
         `;
         searchList.appendChild(movieListItem);
@@ -40,32 +40,45 @@ function displayMoviesList(movies){
 }
 
 function nominateMovies(){
-    //alert('yeah')
     const searchListMovies = searchList.querySelectorAll('.search-list-item');
-    searchListMovies.forEach(async movie => {
-        //console.log(movie.dataset.id);
-        searchList.classList.add('hide-search-list');
-        movieSearchBox.value = "";
-        const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&page=1&apikey=1fd5f2d0`);
-        const movieDetails = await result.json();
-        //console.log(movieDetails);
-        displayMovieDetail(movieDetails);
+    searchListMovies.forEach(movie => {
+        movie.addEventListener('click', async () => {
+            // console.log(movie.dataset.id);
+            searchList.classList.add('hide-search-list');
+            movieSearchBox.value = "";
+            const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&page=1&apikey=1fd5f2d0`);
+            const movieDetails = await result.json();
+            // console.log(movieDetails);
+            displayMovieDetail(movieDetails);
+        });
     });
-    
 }
 
 function displayMovieDetail(details){
-    console.log(details);
     let nomListItem = document.createElement('div');
     nomListItem.classList.add('nom-list-item');
         nomListItem.innerHTML = `  
-        <div class = "movie-info">
+        <div class = "movie-info" onclick = removieMovie()>
         <h3 class = "movie-title">${details.Title}</h3>
         <h3 class = "year">${details.Year}</h3>
+        <button class = "remove-button" onclick = removeMovie()>x</button>
     </div>
         `;
     nominateGrid.appendChild(nomListItem);
 }
+
+function removeMovie(){
+    const nominateListMovies = nominateGrid.querySelectorAll('.nom-list-item');
+    nominateListMovies.forEach(movie => {
+        movie.addEventListener('click', (event) => {
+            
+            movie.remove();
+            
+        });
+    });
+}
+
+
 
 window.addEventListener('click', (event) => {
     if (event.target.ClassName!="form-control"){

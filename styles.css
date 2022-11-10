@@ -133,13 +133,12 @@ a{
 }
 
 .result-container{
-    padding: 3rem 0;
-    position: absolute;
     width: 350px;
-    max-height: fit-content;
+    max-height: max-content;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
     padding: 0.5rem 1rem 0.5rem 1rem;
-    box-shadow: 0.2rem 0.2rem black;
     float: right;
     margin-top: 50px;
     margin-right: 220px;
@@ -164,12 +163,15 @@ a{
 }
 
 .movie-title{
-    font-size: 20px;
     color: black;
 }
 
 .year{
     font-weight: 500;
+}
+
+.remove-button{
+    background-color: none;
 }
 
 @media(max-width: 450px){
@@ -208,14 +210,18 @@ a{
         margin-bottom: 0;
     }
     .result-grid{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
     }
     .movie-info{
         text-align: left;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 10px;
         padding-top: 0;
     }
-    .movie-info .movie-misc-info{
+    .movie-info .movie-title .year{
         justify-content: flex-start;
         padding-left: 0;
     }
